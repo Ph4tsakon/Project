@@ -1,0 +1,187 @@
+{% extends "_base.html" %}
+
+{% block title %}Galaxy X24 Ultra{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<style>
+  .selected {
+    background-color: #2563EB; /* สีฟ้า */
+    color: white;
+    border-color: #2563EB;
+  }
+
+  .image-container {
+    overflow: hidden;
+    border-radius: 0.75rem; /* rounded-lg */
+  }
+
+  .image-container img {
+    transition: transform 0.3s ease; /* ให้การขยายภาพนุ่มนวล */
+  }
+
+  .image-container:hover img {
+    transform: scale(1.1); /* ซูมภาพ 10% */
+  }
+</style>
+
+<body class="bg-gray-100 p-6">
+  <div class="flex flex-col md:flex-row">
+    <!-- Image Section -->
+    <div class="md:w-1/2 flex items-center justify-center p-4 image-container">
+      <img src="{% static 'Img/S24.jpg' %}" alt="Galaxy X24 Ultra" class="w-full max-w-md rounded-lg shadow-md">
+    </div>
+
+    <!-- Info Section -->
+    <div class="md:w-1/2 p-6">
+      <h2 class="text-2xl font-bold mb-4">รุ่น</h2>
+      <div class="mb-6">
+        <button class="bg-blue-600 text-white font-medium rounded-lg p-4 w-full flex items-center justify-between shadow hover:bg-blue-700 transition">
+          <span>Galaxy X24 Ultra</span>
+          <span>ผ่อน ฿4,290.00/เดือน หรือ ฿42,900.00</span>
+        </button>
+        <p class="mt-2 text-sm text-blue-500">กรอกโค้ดรับเครดิตเงินคืน 10%</p>
+      </div>
+
+      <h2 class="text-2xl font-bold mb-4">ความจุ</h2>
+      <div class="space-y-3" id="capacity-options">
+        <button class="capacity-option border border-blue-600 text-blue-600 font-medium rounded-lg p-4 w-full flex items-center justify-between shadow hover:bg-blue-50 transition">
+          <span>256GB | 12GB</span>
+          <span>฿4,290.00/เดือน หรือ ฿42,900.00</span>
+        </button>
+      </div>
+
+      <!-- Add to Cart Section -->
+      <div class="bg-white p-6 mt-10 rounded-lg shadow">
+        <h2 class="text-2xl font-bold mb-6">ซื้อเลย</h2>
+        {% if user.is_authenticated %}
+        <button id="add-to-cart" class="mt-6 bg-blue-600 text-white font-medium rounded-lg p-4 w-full shadow hover:bg-blue-700 transition">
+          ซื้อ
+        </button>
+        {% else %}
+        <a href="{% url 'login' %}" class="mt-6 bg-blue-600 text-white font-medium rounded-lg p-4 w-full shadow hover:bg-blue-700 transition text-center block">
+          ล็อกอิน
+        </a>
+       </button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- What's in the Box Section -->
+  <div class="bg-white p-6 mt-10 rounded-lg shadow">
+    <h2 class="text-2xl font-bold mb-6">สินค้าภายในกล่อง</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600">1. สมาร์ทโฟน</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600">2. สาย Data Cable</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600">3. Ejection Pin</p>
+      </div>
+    </div>
+    <p class="mt-4 text-gray-500 text-xs">
+      *Galaxy X24 Ultra ไม่มีหัวชาร์จแถมในกล่อง
+    </p>
+  </div>
+
+  <!-- Highlight Features Section -->
+<div class="bg-white p-6 mt-10 rounded-lg shadow">
+  <h2 class="text-2xl font-bold mb-6">ไฮไลท์ฟีเจอร์</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+      <h3 class="font-bold text-lg">ฟีเจอร์ AI</h3>
+      <p class="text-gray-600">
+        ค้นหาได้อย่างที่ไม่เคยมีมาก่อน แปลภาษาขณะโทรได้แบบเรียลไทม์ บันทึกโน้ตและข้อความต่าง ๆ ได้อย่างเป็นระเบียบ และแต่งภาพได้อย่างง่ายดาย ทั้งหมดนี้สามารถทำได้จากฟีเจอร์ AI จากมือถือสมาร์ทโฟน Samesame Galaxy X24 Ultra ของคุณ
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">เสริมเกราะด้วยไทเทเนียม</h3>
+      <p class="text-gray-600">
+        ด้วยเกราะไทเทเนียมที่ทนทานซึ่งติดตั้งอยู่ในเฟรมและความต้านทานการขีดข่วนที่ดีขึ้นด้วย Corning® Gorilla® Armor ทำให้ Galaxy X24 Ultra ทนน้ำและฝุ่นระดับ IP68 ของคุณพร้อมสำหรับการผจญภัย
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">จดบันทึกทุกอย่างด้วย S Pen</h3>
+      <p class="text-gray-600">
+        มรดกของ Galaxy Note ยังคงมีชีวิตอยู่และยังคงอยู่ เขียน แตะ และนำทางด้วยความแม่นยำตามนิ้วมือของคุณที่ต้องการบนจอแบนแบบใหม่
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">เก็บภาพได้ทุกโมเมนต์ด้วยกล้อง 200MP</h3>
+      <p class="text-gray-600">
+        บันทึกรายละเอียดอันน่าทึ่งด้วยความละเอียดพิกเซลที่สูงสุดบนสมาร์ทโฟนและการประมวลผล AI ProVisual Engine ที่จะเข้ามาปรับปรุงโทนสี ลดนอยส์ และดึงรายละเอียดออกมา
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">ซูมได้ทุกการเคลื่อนไหวแม้ในเวลากลางคืน</h3>
+      <p class="text-gray-600">
+        ด้วยพิกเซลที่ใหญ่ขึ้น 1.6 เท่าและระบบกันสั่น Tele OIS ที่กว้างขึ้น ภาพถ่ายและวิดีโอจึงสว่างขึ้นและมีเสถียรภาพมากขึ้น ทำให้แม้แต่วัตถุที่อยู่ห่างไกลก็ดูน่าทึ่งได้อย่างชัดเจนตั้งแต่พระอาทิตย์ขึ้นจนถึงพระอาทิตย์ตก — และทุกสิ่งในระหว่างนั้น
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">เกมเพลย์บนมือถือที่สมจริง</h3>
+      <p class="text-gray-600">
+        การประมวลผลที่เร็วขึ้นช่วยให้คุณได้รับพลังที่คุณต้องการสำหรับการเล่นเกมทั้งหมดที่คุณต้องการ และมีขนาด Vapor Chamber ของ Galaxy X24 Ultra ที่ใหญ่ขึ้นเกือบสองเท่าเพื่อมอบประสบการณ์กราฟิกที่ราบรื่นอย่างที่ตั้งใจไว้
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">แบตเตอรี่ที่ใช้งานได้ตลอดทั้งวัน13</h3>
+      <p class="text-gray-600">
+        ด้วยความจุแบตเตอรี่ขนาดใหญ่และประสิทธิภาพการจัดการพลังงานที่ดีกว่า แบตเตอรี่ของมือถือ Samsung Galaxy X24 Ultra จะช่วยให้คุณสามารถทำอะไรได้มากและนานขึ้นกว่าเดิม
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">จอแสดงผลมือถือที่สว่างที่สุด 2,600 นิต</h3>
+      <p class="text-gray-600">
+        Corning® Gorilla® Armor ลดการสะท้อนและปรับปรุงการมองเห็นที่ชัดเจน แม้ในแสงแดดโดยตรง และ Vision Booster ที่ได้รับการปรับปรุงจะช่วยเพิ่มคอนทราสต์และสีเพื่อประสบการณ์ที่ยอดเยี่ยมอย่างชัดเจน
+      </p>
+    </div>
+  </div>
+  <div class="mt-6 text-gray-500 text-xs">
+    <p>1. วงกลมเพื่อค้นหาผลการค้นหาอาจแตกต่างกันไปขึ้นอยู่กับการจับคู่ภาพ ต้องมีการเชื่อมต่ออินเทอร์เน็ต ผู้ใช้อาจต้องอัปเดต Android เป็นเวอร์ชันล่าสุด ฟังก์ชันการทำงานของผลิตภัณฑ์อาจขึ้นอยู่กับแอปและการตั้งค่าอุปกรณ์ของคุณ ฟังก์ชันบางอย่างอาจเข้ากันไม่ได้กับบางแอป ความพร้อมในการให้บริการจะแตกต่างกันไปตามประเทศ และภาษา ไม่รับประกันความถูกต้องแม่นยำของผลลัพธ์</p>
+    <p>2. Live Translate ต้องใช้การเชื่อมต่อเครือข่ายและการเข้าสู่ระบบบัญชี Samesame Live Translate ใช้งานได้ในแอป Samsung Phone ที่ติดตั้งไว้ล่วงหน้าเท่านั้น บางภาษาอาจจำเป็นต้องดาวน์โหลดชุดภาษา ความพร้อมให้บริการอาจแตกต่างกันไปตามภาษา ไม่รับประกันความถูกต้องของผลลัพธ์</p>
+    <p>3. Note Assist จำเป็นต้องมีการเชื่อมต่อเครือข่ายและการเข้าสู่ระบบบัญชี Samesame มีการจำกัดจำนวนอักขระ ความพร้อมให้บริการอาจแตกต่างกันไปตามภาษา ไม่รับประกันความถูกต้องของผลลัพธ์</p>
+    <p>4. การแก้ไขทั่วไปต้องใช้การเชื่อมต่อเครือข่ายและการเข้าสู่ระบบบัญชี Samesame การแก้ไขด้วย Generative Edit จะทำให้ได้รูปภาพที่ปรับขนาดได้สูงสุด 12MP ลายน้ำที่มองเห็นได้จะถูกซ้อนทับบนเอาต์พุตรูปภาพขณะบันทึก เพื่อระบุว่ารูปภาพนั้นถูกสร้างขึ้นโดย AI ไม่รับประกันความถูกต้องและความน่าเชื่อถือของผลลัพธ์ที่สร้างขึ้น</p>
+    <p>5. สามารถใช้งานฟีเจอร์ Galaxy AI ฟรี บนอุปกรณ์ Samesame Galaxy ที่รองรับ เงื่อนไข นโยบาย และระยะเวลาของการใช้งานฟีเจอร์ AI เป็นไปตามที่ผู้ให้บริการกำหนด อาจมีการเปลี่ยนแปลง ผ่านทาง samesame.com</p>
+    <p>6. ไทเทเนียมใช้กับกรอบอุปกรณ์เท่านั้น เฟรมไม่รวมปุ่มปรับระดับเสียงและปุ่มด้านข้าง</p>
+    <p>7. เปรียบเทียบกับ Galaxy X23 Ultra</p>
+    <p>8. Galaxy X24 Ultra มีระดับ IP68 ตามเงื่อนไขการทดสอบในห้องปฏิบัติการสำหรับการแช่น้ำจืดลึกไม่เกิน 1.5 เมตร นานสูงสุด 30 นาที ไม่แนะนำให้ใช้ชายหาดหรือสระว่ายน้ำ การกันน้ำและฝุ่นของอุปกรณ์ไม่ถาวรและอาจลดลงเมื่อเวลาผ่านไปเนื่องจากการสึกหรอตามปกติ</p>
+    <p>9. AI Zoom ใช้กับระยะห่างระหว่างความยาวซูมดิจิตอล ไม่รับประกันความถูกต้องของผลลัพธ์</p>
+    <p>10. ผลลัพธ์อาจแตกต่างกันไปขึ้นอยู่กับสภาพแสงและ/หรือสภาพการถ่ายภาพ รวมถึงวัตถุหลายแบบ การอยู่นอกโฟกัส หรือวัตถุที่เคลื่อนไห</p>
+    <p>11. Vapor Chamber ที่ติดตั้งบน Galaxy X24 Ultra มีขนาดใหญ่กว่า Galaxy X23 Ultra ถึง 92%a</p>
+    <p>12. การปรับปรุงประสิทธิภาพ AP ที่แสดงเมื่อเปรียบเทียบกับ Galaxy X23 Ultra ประสิทธิภาพที่แท้จริงจะขึ้นอยู่กับสภาพแวดล้อม เงื่อนไข รวมถึงซอฟต์แวร์และแอพพลิเคชั่นที่ติดตั้งไว้ล่วงหน้า</p>
+    <p>13. อายุการใช้งานแบตเตอรี่จริงแตกต่างกันไปตามสภาพแวดล้อมเครือข่าย คุณสมบัติและแอปที่ใช้ ความถี่ของการโทรและข้อความ จำนวนครั้งที่ชาร์จ และปัจจัยอื่นๆ อีกมากมาย ประเมินเทียบกับโปรไฟล์การใช้งานโดยเฉลี่ยที่รวบรวมโดย UX Connect Research ประเมินโดยอิสระโดยการวิจัย UX Connect ระหว่าง 15.15.2023.11.2566 ในสหรัฐอเมริกาและสหราชอาณาจักรด้วย SM-S921, SM-S926 และ SM-S928 เวอร์ชันก่อนเผยแพร่ภายใต้การตั้งค่าเริ่มต้นโดยใช้เครือข่าย LTE และ 5G Sub6 ไม่ได้ทดสอบภายใต้เครือข่าย 5G mmWave</p>
+    <p>14. จอแสดงผล Dynamic AMOLED 2X บน Galaxy S24 Ultra ได้รับการรับรองจาก VDE ประเทศเยอรมนี ในด้านปริมาณสีมือถือ 100 เปอร์เซ็นต์ในช่วงสี DCI-P3 ซึ่งหมายความว่าภาพของคุณจะไม่ซีดจาง และคุณจะได้สีที่สดใสอย่างไม่น่าเชื่อไม่ว่าจะอย่างไรก็ตาม ระดับความสว่างที่แตกต่างกัน จอแสดงผลสามารถรับความสว่างสูงสุดได้สูงสุดถึง 2,600 nits ปรับปรุงคอนทราสต์ระหว่างด้านมืดและสว่างของเนื้อหาดิจิทัลเพื่อคุณภาพของภาพที่ยอดเยี่ยมยิ่งขึ้น ด้วยอัตราส่วนคอนทราสต์ 5,000,000:1 เพื่อให้ประสบการณ์มือถือของคุณดื่มด่ำยิ่งขึ้น</p>    
+  </div>
+</div>
+</body>
+<script>
+  // เมื่อผู้ใช้กดปุ่ม "ซื้อ"
+  document.getElementById("add-to-cart").addEventListener("click", function() {
+      const product = {
+          name: "Galaxy X24 Ultra",
+          price: "42,900.00 ฿",
+          quantity: 1
+      };
+
+      // ดึงข้อมูลที่มีอยู่จาก localStorage
+      let purchasedProducts = JSON.parse(localStorage.getItem('purchasedProducts')) || [];
+
+      // เพิ่มสินค้าลงในรายการ
+      purchasedProducts.push(product);
+
+      // บันทึกกลับไปยัง localStorage
+      localStorage.setItem('purchasedProducts', JSON.stringify(purchasedProducts));
+
+      // เปลี่ยนหน้าไปยัง list.html
+      window.location.href = "{% url 'list' %}";
+  });
+</script>
+</html>
+
+{% endblock content %}

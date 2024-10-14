@@ -1,0 +1,178 @@
+{% extends "_base.html" %}
+
+{% block title %}Galaxy X Flip 6{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<style>
+  .selected {
+    background-color: #2563EB; /* สีฟ้า */
+    color: white;
+    border-color: #2563EB;
+  }
+
+  .image-container {
+    overflow: hidden;
+    border-radius: 0.75rem; /* rounded-lg */
+  }
+
+  .image-container img {
+    transition: transform 0.3s ease; /* ให้การขยายภาพนุ่มนวล */
+  }
+
+  .image-container:hover img {
+    transform: scale(1.1); /* ซูมภาพ 10% */
+  }
+</style>
+
+<body class="bg-gray-100 p-6">
+  <div class="flex flex-col md:flex-row">
+    <!-- Image Section -->
+    <div class="md:w-1/2 flex items-center justify-center p-4 image-container">
+      <img src="{% static 'Img/X Flip 6.png' %}" alt="Galaxy X Flip 6" class="w-full max-w-md rounded-lg shadow-md">
+    </div>
+
+    <!-- Info Section -->
+    <div class="md:w-1/2 p-6">
+      <h2 class="text-2xl font-bold mb-4">รุ่น</h2>
+      <div class="mb-6">
+        <button class="bg-blue-600 text-white font-medium rounded-lg p-4 w-full flex items-center justify-between shadow hover:bg-blue-700 transition">
+          <span>Galaxy X Flip 6</span>
+          <span>ผ่อน ฿3,990.00/เดือน หรือ ฿39,900.00</span>
+        </button>
+        <p class="mt-2 text-sm text-blue-500">กรอกโค้ดรับเครดิตเงินคืน 10%</p>
+      </div>
+
+      <h2 class="text-2xl font-bold mb-4">ความจุ</h2>
+      <div class="space-y-3" id="capacity-options">
+        <button class="capacity-option border border-blue-600 text-blue-600 font-medium rounded-lg p-4 w-full flex items-center justify-between shadow hover:bg-blue-50 transition">
+          <span>256GB | 12GB</span>
+          <span>฿5,890.00/เดือน หรือ ฿58,900.00</span>
+        </button>
+      </div>
+
+       <!-- Add to Cart Section -->
+       <div class="bg-white p-6 mt-10 rounded-lg shadow">
+        <h2 class="text-2xl font-bold mb-6">ซื้อเลย</h2>
+        {% if user.is_authenticated %}
+        <button id="add-to-cart" class="mt-6 bg-blue-600 text-white font-medium rounded-lg p-4 w-full shadow hover:bg-blue-700 transition">
+          ซื้อ
+        </button>
+        {% else %}
+        <a href="{% url 'login' %}" class="mt-6 bg-blue-600 text-white font-medium rounded-lg p-4 w-full shadow hover:bg-blue-700 transition text-center block">
+          ล็อกอิน
+        </a>
+       </button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- What's in the Box Section -->
+  <div class="bg-white p-6 mt-10 rounded-lg shadow">
+    <h2 class="text-2xl font-bold mb-6">สินค้าภายในกล่อง</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600">1. สมาร์ทโฟน</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600">2. สาย Data Cable</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600">3. Ejection Pin</p>
+      </div>
+    </div>
+    <p class="mt-4 text-gray-500 text-xs">
+      *Galaxy X Flip6 5G ไม่มีหัวชาร์จในกล่อง
+    </p>
+  </div>
+
+  <!-- Highlight Features Section -->
+<div class="bg-white p-6 mt-10 rounded-lg shadow">
+  <h2 class="text-2xl font-bold mb-6">ไฮไลท์ฟีเจอร์</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+      <h3 class="font-bold text-lg">Galaxy AI is here</h3>
+      <p class="text-gray-600">
+        Galaxy X Flip6 บ่งบอกความเป็นตัวตนของคุณ ขนาดกะทัดรัดและดีไซน์โดดเด่น มาพร้อม Galaxy AI และกล้อง 50MP ที่ยกระดับการถ่ายภาพของคุณ
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">พกพาสะดวก กะทัดรัด โดดเด่นมีสไตล์</h3>
+      <p class="text-gray-600">
+        Galaxy X Flip6 ดีไซน์เรียบหรูทันสมัย บางและพกพาง่าย
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">กล้องที่มีประสิทธิภาพที่ดีสุดบน Galaxy X Flip มาพร้อมกับ Galaxy AI</h3>
+      <p class="text-gray-600">
+        กล้องหลัก 50MP ที่อัปเกรดการประมวลผลภาพผ่าน ProVisual Engine ให้ผลลัพธ์ภาพที่น่าทึ่งและพอร์ตเทรตที่รายละเอียดสมบูรณ์ยิ่งขึ้น
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">FlexCam ที่มาพร้อม Auto Zoom ช่วยบันทึกภาพมุมที่ดีที่สุดของคุณ</h3>
+      <p class="text-gray-600">
+        FlexCam ที่มาพร้อม Auto Zoom ช่วยในการซูมเข้า-ออกเวลาถ่ายภาพ และแสดงภาพตัวอย่างบน FlexWindow เพื่อการถ่ายเซลฟี่แบบไม่ต้องถือสมาร์ทโฟนขณะถ่าย
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">แบตเตอร์รี่ที่ใช้งานได้ยาวนานที่สุดบน Galaxy X Flip</h3>
+      <p class="text-gray-600">
+        นี่คือ X Flip ที่มีความจุแบตเตอร์รี่มากที่สุด มาพร้อมหน่วยประมวลผลทรงพลังอย่าง Snapdragon 8 Gen 3 ที่ทำให้คุณสามารถพูดคุย ส่งข้อความ หรือเล่นเกมตามใจต้องการได้ทั้งวัน
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">ครั้งแรกกับเทคโนโลยีระบายความร้อนใน Galaxy X Flip</h3>
+      <p class="text-gray-600">
+        ไร้กังวลเรื่องความร้อน ด้วย Vapor Chamber ที่สามารถลดความร้อนได้อย่างรวดเร็วและมีประสิทธิภาพ
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">ทนทาน น่าเชื่อถือ ใช้ได้ยาวนาน</h3>
+      <p class="text-gray-600">
+        พบกับ FlexHinge ใหม่ที่มีความบาง ทันสมัยและทนต่อแรงกระแทก
+      </p>
+    </div>
+  </div>
+  <div class="mt-6 text-gray-500 text-xs">
+    <p>1. เปรียบเทียบ Galaxy X Flip 5
+    <p>2. กล้องขนาด 50MP รองรับเฉพาะกล้องหลักของ Galaxy X Flip6 เท่านั้น</p>
+    <p>3. ผลลัพธ์ที่ได้อาจแตกต่างกันไปตามสภาวะแสง และ/หรือสภาพแวดล้อมในการถ่ายภาพ</p>
+    <p>4. เปิดใช้งานออปติคัลควอลิตีซูมได้โดยเซ็นเซอร์ Adaptive Pixel</p>
+    <p>5. ต้องเปิดใช้งานการซูมระยะ 2 เท่าในการตั้งค่าแอป Camera Assistant สามารถดาวน์โหลด Camera Assistant ได้จาก Galaxy Store</p>
+    <p>6. ฟีเจอร์ AI Zoom ใช้กับระยะห่างระหว่างความยาวของการซูมแบบดิจิทัล ไม่อาจรับประกันความถูกต้องของผลลัพธ์</p>
+    <p>7. FlexCam มาพร้อม Auto Zoom ซึ่งมีข้อจำกัดหากถ่ายในที่มีแสงน้อย โดยสามารถใช้ฟังก์ชั่นนี้ได้เมื่อใช้ Flex mode ในกล้องหลักทั้งนี้ Auto Zoom จะหยุดทำงานหากมีการปรัซูมระยะด้วยตัวคุณเอง</p>
+    <p>8. Snapdragon เป็นผลิตภัณฑ์ของ Qualcomm Technologies, Inc. และ/หรือบริษัทย่อย Snapdragon เป็นเครื่องหมายการค้าหรือเครื่องหมายการค้าจดทะเบียนของ Qualcomm Incorporated</p>
+    <p>9. เฉพาะโทรศํพท์มือถือ Samesame เท่านั้น</p>
+    <p>10. ค่าปกติเป็นค่าที่ได้รับการทดสอบภายในห้องทดลองขององค์กรบุคคลที่สาม ค่าปกติคือค่าเฉลี่ยโดยประมาณที่พิจารณาถึงการเบี่ยงเบนของความจุแบตเตอรี่ของตัวอย่างแบตเตอรี่ที่นำมาทดสอบภายใต้มาตรฐาน IEC 61960 ความจุที่ประเมินของ Galaxy X Flip6 คือ 3887mAh อายุการใช้งานจริงของแบตเตอรี่อาจแตกต่างกันไปตามสภาพแวดล้อมของเครือข่าย รูปแบบการใช้งาน และปัจจัยอื่น ๆ</p>
+    <p>11. ความหนาวัดจากขอบบนสุดถึงขอบล่างสุด</p>
+  </div>
+</div>
+</body>
+<script>
+  // เมื่อผู้ใช้กดปุ่ม "ซื้อ"
+  document.getElementById("add-to-cart").addEventListener("click", function() {
+      const product = {
+          name: "Galaxy X Flip 6",
+          price: "39,900.00 ฿",
+          quantity: 1
+      };
+
+      // ดึงข้อมูลที่มีอยู่จาก localStorage
+      let purchasedProducts = JSON.parse(localStorage.getItem('purchasedProducts')) || [];
+
+      // เพิ่มสินค้าลงในรายการ
+      purchasedProducts.push(product);
+
+      // บันทึกกลับไปยัง localStorage
+      localStorage.setItem('purchasedProducts', JSON.stringify(purchasedProducts));
+
+      // เปลี่ยนหน้าไปยัง list.html
+      window.location.href = "{% url 'list' %}";
+  });
+</script>
+</html>
+
+{% endblock content %}

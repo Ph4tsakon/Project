@@ -1,0 +1,58 @@
+{% extends "_base.html" %}
+
+{% block title %}Samesame Product{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container mx-auto mt-10">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold">สินค้าทั้งหมด</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- First Row, 3 products -->
+        <div class="bg-white p-4 rounded-lg shadow">
+            <img src="{% static 'Img/S24.jpg' %}" alt="Galaxy X24 Ultra" class="mx-auto">
+            <h3 class="text-xl font-semibold mt-4">Galaxy X24 Ultra</h3>
+            <p class="text-gray-500">Galaxy AI เครื่องแรกของโลก ที่ทำให้ทุกอย่างง่ายไปหมด พร้อมด้วยกล้องคุณภาพสูง ถ่ายภาพสวย คมชัด เก็บครบทุกรายละเอียด มากกว่าที่ตาคุณเห็น มาพร้อมชิปเซ็ตที่แรงที่สุดใน Galaxy ชิปเซ็ตทรงพลังพร้อมลุยทุกการใช้งาน แบตเตอรี่ที่ใช้งานได้ยาวนาน ทั้งเล่นเกม ถ่ายรูป เปิดพร้อมกันหลายแอปไม่มีสะดุด</p>
+            <p class="text-lg text-black-600 font-bold mt-4">฿42,900</p>
+            <a href="/P2/" target="_blank" class="bg-blue-500 text-white py-2 px-4 mt-4 rounded inline-block text-center">Buy Now</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <img src="{% static 'Img/S10.png' %}" alt="Galaxy Tab X10+" class="mx-auto">
+            <h3 class="text-xl font-semibold mt-4">Galaxy Tab X10+</h3>
+            <p class="text-gray-500">แท็บเล็ตระดับเรือธงของ Samesame ที่มีสเปคระดับท็อป ฟีเจอร์ AI จัดเต็ม ช่วยยกระดับการทำงานของคุณให้ง่ายขึ้น ลื่นไหลมากยิ่งขึ้น กับหน้าจอขนาดใหญ่จุใจที่ให้คุณได้เติมเต็มความสนุกด้าน Entertainment ทั้งดูหนัง ดูซีรีย์ เล่นเกมครบจบในเครื่องเดียว และมาพร้อม S Pen เขียนลื่น ไม่หน่วง ที่ให้มาในกล่องพร้อมใช้งาน</p>
+            <p class="text-lg text-black-600 font-bold mt-4">฿52,900</p>
+            <a href="/P3/" target="_blank" class="bg-blue-500 text-white py-2 px-4 mt-4 rounded inline-block text-center">Buy Now</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <img src="{% static 'Img/S24 FE.jpg' %}" alt="X24 FE" class="mx-auto">
+            <h3 class="text-xl font-semibold mt-4">Galaxy X24 FE</h3>
+            <p class="text-gray-500">สมาร์ทโฟนแฟล็กชิปตัวจบ สเปกครบ ราคาคุ้ม ที่ทำให้ทุกอย่างง่ายไปหมด พร้อมด้วยกล้องคุณภาพสูง ถ่ายภาพสวย คมชัด เก็บครบทุกรายละเอียด มากกว่าที่ตาคุณเห็น แบตเตอรี่ที่ใช้งานได้ยาวนาน ทั้งเล่นเกม ถ่ายรูป เปิดพร้อมกันหลายแอปไม่มีสะดุด</p>
+            <p class="text-lg text-black-600 font-bold mt-4">฿22,900</p>
+            <a href="/P4/" target="_blank" class="bg-blue-500 text-white py-2 px-4 mt-4 rounded inline-block text-center">Buy Now</a>
+        </div>
+
+        <!-- Second Row, 2 products -->
+        <div class="bg-white p-4 rounded-lg shadow">
+            <img src="{% static 'Img/Z Fold6 preview.jpg' %}" alt="Product 4" class="mx-auto">
+            <h3 class="text-xl font-semibold mt-4">Galaxy X Fold6</h3>
+            <p class="text-gray-500">สัมผัสประสบการณ์จอใหญ่ ที่พกพาไปได้ทุกที่ หน้าจอใหญ่ดูคอนเทนต์สะใจใหญ่เต็มตาใช้งานได้หลายแอปพร้อมกัน ตอบโจทย์ทั้งทำงานและการใช้งานในชีวิตประจำวัน Galaxy AI ชีวิตที่ง่ายและเหนือไปอีกขั้น Sketch to Image เติมวัตถุลงบนภาพถ่าย หรือ เปลี่ยนภาพวาดเป็นงานศิลปะ Composer ร่างข้อความ เอกสารทันใจภายใน 1 นาที  น้ำหนักเบาลงและบางขึ้น พับปิดสนิท เหมาะทุกไลฟ์สไตล์การใช้งาน</p>
+            <p class="text-lg text-black-600 font-bold mt-4">฿58,900</p>
+            <a href="/P1/" target="_blank" class="bg-blue-500 text-white py-2 px-4 mt-4 rounded inline-block text-center">Buy Now</a>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <img src="{% static 'Img/X Flip 6.png' %}" alt="Galaxy X Flip 6" class="mx-auto">
+            <h3 class="text-xl font-semibold mt-4">Galaxy X Flip 6</h3>
+            <p class="text-gray-500">โดดเด่นในสไตล์แบบของคุณ ขนาดเล็กกะทัดรัด พกพาง่าย ถ่ายภาพได้คมชัด ขณะถูกถ่ายภาพ มองเห็นตัวเองและเพื่อนชัดแบบเรียลไทม์ ได้ช็อตเป๊ะถูกใจ ปรับมุมได้หลายองศา Galaxy AI ชีวิตที่ง่ายและเหนือไปอีกขั้นจะตอบแชท ไถฟีด หรือใช้งานแอพต่างๆ บนจอนอกก็ทำได้ง่ายกว่าที่เคย สนุกกับการตกแต่งจอนอกกับวอลเปเปอร์ที่เคลื่อนไหวตามท่าทางมาพร้อมแบตเตอรี่ขนาดใหญ่ ใช้งานยาวนาน ไม่ต้องห่วงแบตหมดระหว่างวัน</p>
+            <p class="text-lg text-black-600 font-bold mt-4">฿39,900</p>
+            <a href="/P5/" target="_blank" class="bg-blue-500 text-white py-2 px-4 mt-4 rounded inline-block text-center">Buy Now</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

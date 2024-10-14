@@ -1,0 +1,86 @@
+{% extends "_base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<body class="bg-gray-100">
+
+    <div class="container mx-auto mt-10 slider-container">
+        <div class="slide">
+            <a href="P1/" target="_blank">
+                <video id="video" autoplay muted loop style="width: 100%; height: auto;">
+                    <source src="{% static 'Img/galaxy-z-fold6.mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </a>
+        </div>
+
+        <!-- Text Section -->
+        <div class="text-section" id="text-section">
+            <h1 class="text-5xl font-bold mb-4">Galaxy X Fold6</h1>
+            <p class="text-lg text-gray-700 mb-4">รับสิทธิพิเศษ มูลค่าสูงสุด 27,380.-</p>
+            <div>
+                <a href="P1/" target="_blank" class="bg-black text-white py-2 px-4 rounded">เรียนรู้เพิ่มเติม</a>
+                <a href="P1/" target="_blank" class="ml-4 bg-black text-white py-2 px-4 rounded">ซื้อเลย</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="container mx-auto mt-10">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold">Best Offers</h2>
+            <a href="AP/" class="text-blue-600 hover:underline">ดูทั้งหมด</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-4 rounded-lg shadow">
+                <img src="{% static 'Img/S24.jpg' %}" alt="Galaxy X24 Ultra" class="mx-auto">
+                <h3 class="text-xl font-semibold mt-4">Galaxy X24 Ultra</h3>
+                <p class="text-gray-500">Galaxy AI เครื่องแรกของโลก ที่ทำให้ทุกอย่างง่ายไปหมด พร้อมด้วยกล้องคุณภาพสูง ถ่ายภาพสวย คมชัด เก็บครบทุกรายละเอียด มากกว่าที่ตาคุณเห็น มาพร้อมชิปเซ็ตที่แรงที่สุดใน Galaxy ชิปเซ็ตทรงพลังพร้อมลุยทุกการใช้งาน แบตเตอรี่ที่ใช้งานได้ยาวนาน ทั้งเล่นเกม ถ่ายรูป เปิดพร้อมกันหลายแอปไม่มีสะดุด</p>
+                <p class="text-lg text-black-600 font-bold mt-4">฿42,900</p>
+                <a href="P2/" target="_blank" class="bg-blue-500 text-white py-2 px-4 mt-4 rounded inline-block text-center">
+                    Buy Now
+                </a>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg shadow">
+                <img src="{% static 'Img/S10.png' %}" alt="Galaxy Tab X10+" class="mx-auto">
+                <h3 class="text-xl font-semibold mt-4">Galaxy Tab X10+</h3>
+                <p class="text-gray-500">แท็บเล็ตระดับเรือธงของ Samesame ที่มีสเปคระดับท็อป ฟีเจอร์ AI จัดเต็ม ช่วยยกระดับการทำงานของคุณให้ง่ายขึ้น ลื่นไหลมากยิ่งขึ้น กับหน้าจอขนาดใหญ่จุใจที่ให้คุณได้เติมเต็มความสนุกด้าน Entertainment ทั้งดูหนัง ดูซีรีย์ เล่นเกมครบจบในเครื่องเดียว และมาพร้อม S Pen เขียนลื่น ไม่หน่วง ที่ให้มาในกล่องพร้อมใช้งาน</p>
+                <p class="text-lg text-black-600 font-bold mt-4">฿52,900</p>
+                <a href="P3/" target="_blank" class="bg-blue-500 text-white py-2 px-4 mt-4 rounded inline-block text-center">
+                    Buy Now
+                </a>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg shadow">
+                <img src="{% static 'Img/S24 FE.jpg' %}" alt="X24 FE" class="mx-auto">
+                <h3 class="text-xl font-semibold mt-4">X24 FE</h3>
+                <p class="text-gray-500">สมาร์ทโฟนแฟล็กชิปตัวจบ สเปกครบ ราคาคุ้ม ที่ทำให้ทุกอย่างง่ายไปหมด พร้อมด้วยกล้องคุณภาพสูง ถ่ายภาพสวย คมชัด เก็บครบทุกรายละเอียด มากกว่าที่ตาคุณเห็น แบตเตอรี่ที่ใช้งานได้ยาวนาน ทั้งเล่นเกม ถ่ายรูป เปิดพร้อมกันหลายแอปไม่มีสะดุด</p>
+                <p class="text-lg text-black-600 font-bold mt-4">฿22,900</p>
+                <a href="P4/" target="_blank" class="bg-blue-500 text-white py-2 px-4 mt-4 rounded inline-block text-center">
+                    Buy Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* ซ่อนช่องเวลาในวิดีโอ */
+        video::-webkit-media-controls-panel {
+            display: none !important;
+        }
+    </style>
+
+    <script>
+        const video = document.getElementById('video');
+        video.addEventListener('click', function() {
+            this.play(); // ทำให้วิดีโอเล่นต่อเมื่อคลิก
+        });
+    </script>
+
+</body>
+</html>
+{% endblock content %}

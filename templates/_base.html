@@ -1,0 +1,189 @@
+{% load compress %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Untitled{% endblock title %}</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- sarabun -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <!-- mitr -->
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;700&display=swap" rel="stylesheet">
+    <!-- prompt -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- Bebas -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <style>
+        /* กำหนดขนาดของสไลด์ */
+        .slider {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            /* ทำให้สไลด์ยืดหยุ่นตามความกว้างของ container */
+        }
+
+        .slide {
+            min-width: 100%;
+            transition: transform 0.5s ease-in-out;
+            display: flex;
+            justify-content: center;
+            /* จัดกึ่งกลางรูปในสไลด์ */
+            align-items: center;
+            /* จัดกึ่งกลางรูปในแนวตั้ง */
+        }
+
+        /* กำหนดขนาดของรูปภาพในสไลด์ */
+        .slide img {
+            max-width: 100%;
+            /* ทำให้รูปภาพมีความกว้างสูงสุด 100% ของสไลด์ */
+            max-height: 500px;
+            /* จำกัดความสูงของรูปภาพให้ไม่เกิน 500px */
+            object-fit: contain;
+            /* ทำให้รูปภาพคงอัตราส่วนและไม่ถูกครอบ */
+        }
+
+        /* ปุ่มเลื่อนสไลด์ */
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .text-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-50">
+
+    <nav class="bg-gray-200 p-4 flex items-center w-full">
+        <a class="flex items-center mr-4">
+            <img src="{% static 'Img/logo.png' %}" class="h-6 mr-3 sm:h-9" alt="Logo">
+        </a>
+
+        <ul class="flex space-x-4 font-medium">
+            <li>
+                <a href="/" class="text-black" style="font-family: 'Bebas', sans-serif;"
+                    aria-current="page">SAMESAME</a>
+            </li>
+        </ul>
+
+        <div class="ml-auto flex space-x-4">
+            <ul class="flex space-x-4 font-medium">
+                <li>
+                </li>
+                {% if user.is_authenticated %}
+                <a href="/list/" class="flex">
+                    <img src="{% static 'Img/shop.png' %}" class="h-6 mr-3 sm:h-9" alt="Logo">
+                </a>
+                </a>
+                <li>
+                    <a href="/admin" class="text-black hover:text-gray-300">{{user.username}}</a>
+                </li>
+                <li>
+                    <a href="/logout" class="text-black hover:text-gray-300">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="/login" class="text-black hover:text-gray-300">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="container mx-auto my-8 px-4">
+        {% block content %}{% endblock content %}
+    </div>
+
+</body>
+
+</html>
+
+<footer class="bg-gray-200 text-black-700 py-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Product and Service -->
+        <div>
+            <h3 class="font-semibold mb-4">Product and Service</h3>
+            <ul class="space-y-2">
+                <li>สมาร์ทโฟน</li>
+                <li>แท็บเล็ต</li>
+                <li>หูฟัง</li>
+                <li>อุปกรณ์เสริม</li>
+                <li>หน่วยความจำ</li>
+            </ul>
+        </div>
+
+        <!-- Shop -->
+        <div>
+            <h3 class="font-semibold mb-4">Shop</h3>
+            <ul class="space-y-2">
+                <li>ข้อเสนอพิเศษ</li>
+                <li>Store Locator</li>
+                <li>Samesame Experience Store</li>
+                <li>ศูนย์บริการ</li>
+                <li>Store Pickup and Support</li>
+                <li>โปรโมชั่นล่าสุด</li>
+                <li>ติดต่อ Samesame Store</li>
+                <li>ร้านค้าสำหรับธุรกิจ</li>
+                <li>คำถามพบบ่อย (Shop FAQ)</li>
+                <li>สิทธิพิเศษสำหรับนักเรียน</li>
+                <li>Explore</li>
+            </ul>
+        </div>
+
+        <!-- Support -->
+        <div>
+            <h3 class="font-semibold mb-4">Support</h3>
+            <ul class="space-y-2">
+                <li>At Your Service</li>
+                <li>Live Chat</li>
+                <li>ติดต่อเรา</li>
+                <li>การลงทะเบียนผลิตภัณฑ์</li>
+                <li>Community</li>
+                <li>Email to CEO's Office</li>
+            </ul>
+        </div>
+
+        <!-- บัญชีผู้ใช้ & ชุมชน -->
+        <div>
+            <h3 class="font-semibold mb-4">บัญชีผู้ใช้ & ชุมชน</h3>
+            <ul class="space-y-2">
+                <li>My Page</li>
+                <li>สินค้าของฉัน</li>
+                <li>ค่ำสั่งซื้อ</li>
+                <li>บริการ</li>
+                <li>ชุมชน</li>
+                <li>Members</li>
+                <li>เซมเซมรีวอร์ด</li>
+            </ul>
+        </div>
+    </div>
+
+</footer>

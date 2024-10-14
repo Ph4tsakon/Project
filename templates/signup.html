@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+        font-family: 'Anuphan', sans-serif; 
+        font-family: 'Prompt', sans-serif;
+        font-family: 'Sarabun', sans-serif;
+        display: flex; /* ใช้ flex display */
+        flex-direction: column; /* ตั้งค่า flex direction เป็น column */
+        min-height: 100vh; /* ตั้งค่าให้ body มีความสูงอย่างน้อย 100vh */
+        margin: 0; /* เอา margin ออก */
+        background-color: #f4f6fa; /* ตั้งพื้นหลังให้ตรงกับ class bg-gray-500 */
+        }
+
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            background: linear-gradient(to top, #e32c08, #ff9e20);
+            color: #FFFFFF;
+            padding: 10px 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .navbar a {
+            color: #FFFFFF;
+        }
+
+        .navbar a:hover {
+            color: #D1D5DB;
+        }
+
+        .hidden-navbar {
+            transform: translateY(-100%);
+        }
+
+        .show-navbar {
+            transform: translateY(0);
+        }
+
+        .register-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            margin: 100px auto; /* Centering the container */
+            margin-top: 80px; /* Add margin-top to push it below navbar */
+        }
+
+        .register-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .register-container input[type="text"],
+        .register-container input[type="email"],
+        .register-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .register-container button {
+            width: 100%;
+            padding: 10px;
+			background: linear-gradient(to right, #c8f8ff, #2427ff);
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .register-container button:hover {
+			background: linear-gradient(to right, #c8f8ff, #2427ff);
+        }
+
+        .register-container .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .register-container .link a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .register-container .link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto; /* ผลัก footer ลงไปด้านล่างสุด */
+        }
+
+        .main-content {
+            flex: 1; /* เพิ่มเพื่อให้พื้นที่ระหว่าง nav และ footer ขยาย */
+        }
+        body {
+            background-image: url("{% static 'images/bg1.png' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            display: flex; /* ใช้ Flexbox สำหรับจัดตำแหน่ง */
+            justify-content: center; /* จัดกลางในแนวนอน */
+            align-items: center; /* จัดกลางในแนวตั้ง */
+        }
+
+        .register-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px; /* กำหนดความกว้างสูงสุดของบล็อก */
+            width: 100%; /* กำหนดความกว้างให้เป็น 100% */
+        }
+
+        button {
+            margin-top: 10px; /* เพิ่มระยะห่างระหว่างปุ่ม */
+        }
+
+        .back-button {
+            margin-top: 20px; /* ระยะห่างจากปุ่มลงทะเบียน */
+            background-color: #f3f4f6; /* สีพื้นหลังของปุ่มย้อนกลับ */
+            border: 1px solid #d1d5db; /* กรอบของปุ่มย้อนกลับ */
+            padding: 10px; /* เพิ่มระยะห่างภายใน */
+            border-radius: 5px; /* มุมโค้ง */
+            cursor: pointer; /* แสดงว่าเป็นปุ่มที่คลิกได้ */
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Main Content Wrapper -->
+    <div class="register-container">
+        <h2>ลงทะเบียน</h2>
+        <form method="POST" action="{% url 'add_user' %}">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="ชื่อผู้ใช้" required>
+            <input type="text" name="firstname" placeholder="ชื่อจริง" required>
+            <input type="text" name="lastname" placeholder="นามสกุล" required>
+            <input type="email" name="email" placeholder="อีเมล" required>
+            <input type="password" name="password" placeholder="รหัสผ่าน" required>
+            <input type="password"name="repassword" placeholder="ยืนยันรหัสผ่าน" required>
+            <button type="submit">ลงทะเบียน</button>
+        </form>
+
+        <button class="back-button" onclick="window.history.back()">ย้อนกลับ</button> <!-- ปุ่มย้อนกลับ -->
+        <div class="link">
+            <p>มีบัญชีอยู่แล้ว? <a href="{% url 'login' %}">เข้าสู่ระบบ</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

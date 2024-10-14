@@ -1,0 +1,157 @@
+{% extends "_base.html" %}
+
+{% block title %}Galaxy X Fold6{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<style>
+  .selected {
+    background-color: #2563EB; /* สีฟ้า */
+    color: white;
+    border-color: #2563EB;
+  }
+
+  .image-container {
+    overflow: hidden;
+    border-radius: 0.75rem; /* rounded-lg */
+  }
+
+  .image-container img {
+    transition: transform 0.3s ease; /* ให้การขยายภาพนุ่มนวล */
+  }
+
+  .image-container:hover img {
+    transform: scale(1.1); /* ซูมภาพ 10% */
+  }
+</style>
+
+<body class="bg-gray-100 p-6">
+  <div class="flex flex-col md:flex-row">
+    <!-- Image Section -->
+    <div class="md:w-1/2 flex items-center justify-center p-4 image-container">
+      <img src="{% static 'Img/Z Fold6 preview.jpg' %}" alt="Galaxy X Fold6" class="w-full max-w-md rounded-lg shadow-md">
+    </div>
+
+    <!-- Info Section -->
+    <div class="md:w-1/2 p-6">
+      <h2 class="text-2xl font-bold mb-4">Galaxy X Fold6</h2>
+      <div class="mb-6">
+        <button class="bg-blue-600 text-white font-medium rounded-lg p-4 w-full flex items-center justify-between shadow hover:bg-blue-700 transition">
+          <span>Galaxy X Fold6</span>
+          <span>ผ่อน ฿5,890.00/เดือน หรือ ฿58,900.00</span>        </button>
+        <p class="mt-2 text-sm text-blue-500">กรอกโค้ดรับเครดิตเงินคืน 10%</p>
+      </div>
+
+      <h2 class="text-2xl font-bold mb-4">ความจุ</h2>
+      <div class="space-y-3" id="capacity-options">
+        <button class="capacity-option border border-blue-600 text-blue-600 font-medium rounded-lg p-4 w-full flex items-center justify-between shadow hover:bg-blue-50 transition">
+          <span>256GB | 12GB</span>
+          <span>฿5,890.00/เดือน หรือ ฿58,900.00</span>
+        </button>
+      </div>
+
+      <!-- Add to Cart Section -->
+      <div class="bg-white p-6 mt-10 rounded-lg shadow">
+        <h2 class="text-2xl font-bold mb-6">ซื้อเลย</h2>
+        {% if user.is_authenticated %}
+        <button id="add-to-cart" class="mt-6 bg-blue-600 text-white font-medium rounded-lg p-4 w-full shadow hover:bg-blue-700 transition">
+          ซื้อ
+        </button>
+        {% else %}
+        <a href="{% url 'login' %}" class="mt-6 bg-blue-600 text-white font-medium rounded-lg p-4 w-full shadow hover:bg-blue-700 transition text-center block">
+          ล็อกอิน
+        </a>
+       </button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+  <!-- What's in the Box Section -->
+  <div class="bg-white p-6 mt-10 rounded-lg shadow">
+    <h2 class="text-2xl font-bold mb-6">สินค้าภายในกล่อง</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600">1. สมาร์ทโฟน</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600">2. สาย Data Cable</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600">3. Ejection Pin</p>
+      </div>
+    </div>
+    <p class="mt-4 text-gray-500 text-xs">
+      *Galaxy X Fold6 5G ไม่มีหัวชาร์จในกล่อง
+    </p>
+  </div>
+
+  <!-- Highlight Features Section -->
+  <div class="bg-white p-6 mt-10 rounded-lg shadow">
+    <h2 class="text-2xl font-bold mb-6">ไฮไลท์ฟีเจอร์</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="font-bold text-lg">Galaxy AI is here</h3>
+        <p class="text-gray-600">
+          เสริมพลังด้วยพลังคอมพิวเตอร์ที่พาพาไปในระบบประสานคุณกับ Galaxy Z Fold6 ยืนนานใหม่ของสมาร์ทโฟนพับที่ทรงพลังกว่าเดิม
+          ด้วยดีไซน์ที่เบาและบางสุดประสิทธิภาพที่สามารถจัดการทุกอย่างได้อย่างง่ายดายด้วยพลังจาก Galaxy AI
+        </p>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg">เบาและบางลง</h3>
+        <p class="text-gray-600">
+          การออกแบบในระดับที่เหนือกว่าของจอพับที่เล็กลงกว่าเดิม ทำให้ผู้ใช้พกพาได้ง่ายดายยิ่งขึ้น
+        </p>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg">ทนทาน น่าเชื่อถือ ใช้งานยาวนาน</h3>
+        <p class="text-gray-600">
+          พร้อม FlexHinge ที่ให้ความบางยิ่งขึ้น การออกแบบที่แข็งแรงและทนทานต่อการใช้งานในระยะยาว
+        </p>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg">หน่วยประมวลผลที่เร็วที่สุด</h3>
+        <p class="text-gray-600">
+          เพลิดเพลินกับการเล่นเกมที่ลื่นไหลด้วย Vulkan และหน่วยประมวลผล Snapdragon 8 Gen 3 for Galaxy ที่มีประสิทธิภาพเหนือกว่าที่เคย
+        </p>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg">สนุกกับเกมอย่างเต็มที่</h3>
+        <p class="text-gray-600">
+          แบตเตอรี่ที่ให้พลังเต็มอิ่มตลอดทั้งวัน ไม่เพียงแค่เป็นแบตเตอรี่ขนาดใหญ่เท่านั้น แต่ยังใช้พลังงานอย่างมีประสิทธิภาพมากยิ่งขึ้น
+        </p>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg">เหนือระดับด้วย ProVisual Engine
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  // เมื่อผู้ใช้กดปุ่ม "ซื้อ"
+  document.getElementById("add-to-cart").addEventListener("click", function() {
+      const product = {
+          name: "Galaxy X Fold6",
+          price: "58,900.00 ฿",
+          quantity: 1
+      };
+
+      // ดึงข้อมูลที่มีอยู่จาก localStorage
+      let purchasedProducts = JSON.parse(localStorage.getItem('purchasedProducts')) || [];
+
+      // เพิ่มสินค้าลงในรายการ
+      purchasedProducts.push(product);
+
+      // บันทึกกลับไปยัง localStorage
+      localStorage.setItem('purchasedProducts', JSON.stringify(purchasedProducts));
+
+      // เปลี่ยนหน้าไปยัง list.html
+      window.location.href = "{% url 'list' %}";
+  });
+</script>
+
+{% endblock content %}

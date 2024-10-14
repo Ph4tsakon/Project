@@ -1,0 +1,141 @@
+{% extends "_base.html" %}
+
+{% block title %}ประวัติการซื้อ{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #000000;
+            color: white;
+        }
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        /* ซ่อน footer */
+        footer {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Product List</h1>
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Delivery Date</th> <!-- เพิ่มคอลัมน์สำหรับวันที่จัดส่ง -->
+                <th>Actions</th> <!-- เพิ่มคอลัมน์สำหรับปุ่มลบ -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamic content will be inserted here -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Simulate product list from localStorage (you can replace this with actual data from your backend)
+    const productList = JSON.parse(localStorage.getItem('purchasedProducts')) || [];
+
+    const tableBody = document.querySelector('#productTable tbody');
+
+    // ฟังก์ชันคำนวณวันที่จัดส่ง (เพิ่ม 2 วันจากวันปัจจุบัน)
+    function calculateDeliveryDate() {
+        const currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() + 2); // เพิ่มวันอีก 2 วัน
+        return currentDate.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    function renderProductTable() {
+        tableBody.innerHTML = '';  // ล้างเนื้อหาในตารางก่อนการแสดงผลใหม่
+
+        productList.forEach((product, index) => {
+            const row = document.createElement('tr');
+
+            const nameCell = document.createElement('td');
+            nameCell.textContent = product.name;
+            row.appendChild(nameCell);
+
+            const priceCell = document.createElement('td');
+            priceCell.textContent = product.price;
+            row.appendChild(priceCell);
+
+            const quantityCell = document.createElement('td');
+            quantityCell.textContent = product.quantity;
+            row.appendChild(quantityCell);
+
+            // สร้างเซลล์สำหรับวันที่จัดส่ง
+            const deliveryDateCell = document.createElement('td');
+            deliveryDateCell.textContent = calculateDeliveryDate();  // เรียกฟังก์ชันคำนวณวันที่
+            row.appendChild(deliveryDateCell);
+
+            // สร้างเซลล์สำหรับปุ่มลบ
+            const actionCell = document.createElement('td');
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'ลบ';
+            deleteButton.classList.add('delete-btn');
+            deleteButton.addEventListener('click', () => {
+                // แสดงกล่องยืนยันก่อนการลบ
+                const confirmation = confirm('คุณแน่ใจว่าจะลบสินค้านี้หรือไม่?');
+                if (confirmation) {
+                    deleteProduct(index);  // เรียกฟังก์ชันเพื่อลบสินค้า
+                }
+            });
+            actionCell.appendChild(deleteButton);
+            row.appendChild(actionCell);
+
+            tableBody.appendChild(row);
+        });
+    }
+
+    function deleteProduct(index) {
+        // ลบสินค้าตาม index ที่เลือก
+        productList.splice(index, 1);
+        // บันทึก productList ที่อัปเดตกลับไปยัง localStorage
+        localStorage.setItem('purchasedProducts', JSON.stringify(productList));
+        // อัปเดตตารางใหม่
+        renderProductTable();
+    }
+
+    // เรียกการแสดงผลตารางเมื่อโหลดหน้า
+    renderProductTable();
+</script>
+
+</body>
+</html>
+{% endblock content %}

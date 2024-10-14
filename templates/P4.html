@@ -1,0 +1,185 @@
+{% extends "_base.html" %}
+
+{% block title %}Galaxy X24 FE{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+<style>
+  .selected {
+    background-color: #2563EB; /* สีฟ้า */
+    color: white;
+    border-color: #2563EB;
+  }
+
+  .image-container {
+    overflow: hidden;
+    border-radius: 0.75rem; /* rounded-lg */
+  }
+
+  .image-container img {
+    transition: transform 0.3s ease; /* ให้การขยายภาพนุ่มนวล */
+  }
+
+  .image-container:hover img {
+    transform: scale(1.1); /* ซูมภาพ 10% */
+  }
+</style>
+
+<body class="bg-gray-100 p-6">
+  <div class="flex flex-col md:flex-row">
+    <!-- Image Section -->
+    <div class="md:w-1/2 flex items-center justify-center p-4 image-container">
+      <img src="{% static 'Img/S24 FE.jpg' %}" alt="Galaxy X24 FE" class="w-full max-w-md rounded-lg shadow-md">
+    </div>
+
+    <!-- Info Section -->
+    <div class="md:w-1/2 p-6">
+      <h2 class="text-2xl font-bold mb-4">รุ่น</h2>
+      <div class="mb-6">
+        <button class="bg-blue-600 text-white font-medium rounded-lg p-4 w-full flex items-center justify-between shadow hover:bg-blue-700 transition">
+          <span>Galaxy X24 FE</span>
+          <span>ผ่อน ฿2,290.00/เดือน หรือ ฿22,900.00</span>
+        </button>
+        <p class="mt-2 text-sm text-blue-500">กรอกโค้ดรับเครดิตเงินคืน 10%</p>
+      </div>
+
+      <h2 class="text-2xl font-bold mb-4">ความจุ</h2>
+      <div class="space-y-3" id="capacity-options">
+        <button class="capacity-option border border-blue-600 text-blue-600 font-medium rounded-lg p-4 w-full flex items-center justify-between shadow hover:bg-blue-50 transition">
+          <span>256GB | 8GB</span>
+          <span>฿2,290.00/เดือน หรือ ฿22,900.00</span>
+        </button>
+      </div>
+
+      <!-- Add to Cart Section -->
+      <div class="bg-white p-6 mt-10 rounded-lg shadow">
+        <h2 class="text-2xl font-bold mb-6">ซื้อเลย</h2>
+        {% if user.is_authenticated %}
+        <button id="add-to-cart" class="mt-6 bg-blue-600 text-white font-medium rounded-lg p-4 w-full shadow hover:bg-blue-700 transition">
+          ซื้อ
+        </button>
+        {% else %}
+        <a href="{% url 'login' %}" class="mt-6 bg-blue-600 text-white font-medium rounded-lg p-4 w-full shadow hover:bg-blue-700 transition text-center block">
+          ล็อกอิน
+        </a>
+       </button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+  <!-- What's in the Box Section -->
+  <div class="bg-white p-6 mt-10 rounded-lg shadow">
+    <h2 class="text-2xl font-bold mb-6">สินค้าภายในกล่อง</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600">1. สมาร์ทโฟน</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600">2. สาย Data Cable</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <p class="text-gray-600">3. Ejection Pin</p>
+      </div>
+    </div>
+    <p class="mt-4 text-gray-500 text-xs">
+      *Galaxy Z Fold6 5G ไม่มีหัวชาร์จในกล่อง
+    </p>
+  </div>
+
+  <!-- Highlight Features Section -->
+<div class="bg-white p-6 mt-10 rounded-lg shadow">
+  <h2 class="text-2xl font-bold mb-6">ไฮไลท์ฟีเจอร์</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+      <h3 class="font-bold text-lg">Galaxy AI is here</h3>
+      <p class="text-gray-600">
+        Galaxy X24FE ที่มาพร้อมกับ Galaxy AI ที่ทำให้คุณสามารถส่งเสริมจินตนาการของคุณได้ในอีกระดับ
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">ซูมได้ทุกการเคลื่อนไหวแม้ในเวลากลางคืน</h3>
+      <p class="text-gray-600">
+        ด้วยกล้องที่มาพร้อมกับ Galaxy AI ทำให้แม้แต่วัตถุที่อยู่ห่างไกลก็ดูน่าทึ่งได้อย่างชัดเจน⁸ตั้งแต่พระอาทิตย์ขึ้นจนถึงพระอาทิตย์ตก — และทุกสิ่งในระหว่างนั้น
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">ให้แต่ละช็อตที่ถ่ายดูโปรสุด ๆ</h3>
+      <p class="text-gray-600">
+        สัมผัสความสนุกของการบันทึกภาพช่วงเวลาต่าง ๆ ได้ด้วยรายละเอียดอันน่าตื่นตาตื่นใจ พร้อม Photo Assist ที่สามารถปรับขนาด ขยับ หรือลบสิ่งที่ไม่ต้องการออกจากภาพได้ ด้วย AI powered editing tool
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">เกมเพลย์บนมือถือที่สมจริง</h3>
+      <p class="text-gray-600">
+        การประมวลผลที่เร็วขึ้นช่วยให้คุณได้รับพลังที่คุณต้องการสำหรับการเล่นเกมทั้งหมดที่คุณต้องการด้วยชิปเซ็ต Exynos 2400e
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">ดีไซน์โดดเด่นพร้อมสีที่มีให้เลือกอย่างหลากหลายเพื่อให้เหมาะกับคุณ</h3>
+      <p class="text-gray-600">
+        พบกับ Galaxy S24 FE ที่มาพร้อมกับสีที่มีให้เลือกหลากหลาย พร้อมขอบที่บางมากขึ้น ที่ออกแบบมาให้จับกระชับมือ และความต้านทานการขีดข่วนที่ดีขึ้นด้วย Corning® Gorilla® Armor⁶ ทำให้ Galaxy X24 FE ทนน้ำและฝุ่นระดับ IP68
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">ภาพที่สมจริงและมีชีวิตชีวา</h3>
+      <p class="text-gray-600">
+        ลดการสะท้อนและปรับปรุงการมองเห็นที่ชัดเจน แม้ในแสงแดดโดยตรง และหน้าจอ Dynamic AMOLED 2X ที่ได้รับการปรับปรุงจะช่วยเพิ่มคอนทราสต์และสีเพื่อประสบการณ์ที่ยอดเยี่ยมอย่างชัดเจน
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">พบกับกล้องที่ดีที่สุดใน Samesame Galaxy FE</h3>
+      <p class="text-gray-600">
+        บันทึกรายละเอียดอันน่าทึ่งด้วยความละเอียดพิกเซลที่สูงสุดบนสมาร์ทโฟนและการประมวลผล AI ProVisual Engine ที่จะเข้ามาปรับปรุงโทนสี ลดนอยส์ และดึงรายละเอียดออกมา
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg">แบตเตอรี่พลังอึดใช้ได้ยาวนาน</h3>
+      <p class="text-gray-600">
+        ด้วยความจุแบตเตอรี่ขนาดใหญ่ 4,700 mAh และประสิทธิภาพการจัดการพลังงานที่ดีกว่า แบตเตอรี่ของมือถือ Samesame Galaxy X24 FE จะช่วยให้คุณสามารถใช้ได้ยาวนานมากขึ้น
+      </p>
+    </div>
+  </div>
+  <div class="mt-6 text-gray-500 text-xs">
+    <p>1. Circle to Search หรือวงกลมเพื่อค้นหา การจับคู่ภาพ ยกระดับการใช้ AI ที่จะเข้ามาเปลี่ยนวิธีการค้นหาข้อมูลบนอินเทอร์เน็ตของคุณไปอย่างสิ้นเชิง ด้วยฟีเจอร์ ต้องอัปเดต Android เป็นเวอร์ชันล่าสุดเพื่อความถูกต้องแม่นยำและ ผลลัพธ์จะแตกต่างกันไปตามประเทศ และภาษา</p>
+    <p>2. Live Translate คุณสามารถพูดภาษาต่างประเทศได้ทันทีผ่าน Live Translate จาก Samesame Galaxy AI ไม่ว่าคุณจะส่งข้อความ หรือคุยโทรศัพท์ นักแปลภาษาสด AI นี้จะพูดแทนคุณ รวมถึงนำทาง จอง และสื่อสารภาษาต่างๆ ทั่วโลกโดยปราศจากกำแพงทางภาษาอีกต่อไป โดยต้องติดตั้ง ดาวน์โหลดชุดภาษา ไว้ล่วงหน้า</p>
+    <p>3. Note Assist จดโน้ตแทนคุณและจัดรูปแบบให้ตรงกันกับเทมเพลตที่คุณสร้างไว้ล่วงหน้าได้ อีกทั้งยังแปลงเป็นสรุปสั้นๆ แก้ไขการสะกดคำ และแปลภาษาให้คุณได้อีกด้วยบน Note Assist จำเป็นต้องเข้าสู่ระบบบัญชี Samesame พร้อมให้บริการอาจแตกต่างกันไปตามภาษา</p>
+    <p>4. สามารถใช้งานฟีเจอร์ Galaxy AI ฟรี บนอุปกรณ์ Samesame Galaxy ที่รองรับ เงื่อนไข นโยบาย และระยะเวลาของการใช้งานฟีเจอร์ AI เป็นไปตามที่ผู้ให้บริการกำหนด อาจมีการเปลี่ยนแปลง ผ่านทาง samesame.com</p>
+    <p>5.Generative Edit ต้องใช้การเชื่อมต่อเครือข่ายและการเข้าสู่ระบบ Samesame Account การแก้ไขภาพด้วย Generative Edit อาจทำให้ภาพถ่ายได้รับการปรับขนาดใหม่สูงสุด 12MP มีลายน้ำปรากฏอยู่เหนือภาพที่ได้ขณะที่ทำการบันทึก เพื่อระบุว่าภาพดังกล่าวนั้นสร้างขึ้นด้วย AI ไม่รับประกันความแม่นยำและความน่าเชื่อถือของผลลัพธ์ที่สร้างขึ้น</p>
+    <p>6.Galaxy X24 FE Corning® Gorilla® Armor ไม่รวมกระจกที่ใช้สำหรับเลนส์กล้อง</p>
+    <p>7. Galaxy X24 FE มีระดับ IP68 ตามเงื่อนไขการทดสอบในห้องปฏิบัติการสำหรับการแช่น้ำจืดลึกไม่เกิน 1.5 เมตร นานสูงสุด 30 นาที ไม่แนะนำให้ใช้ชายหาดหรือสระว่ายน้ำ การกันน้ำและฝุ่นของอุปกรณ์ไม่ถาวรและอาจลดลงเมื่อเวลาผ่านไปเนื่องจากการสึกหรอตามปกติ</p>
+    <p>8. ผลลัพธ์อาจแตกต่างกันไปขึ้นอยู่กับสภาพแสงและ/หรือสภาพการถ่ายภาพ รวมถึงวัตถุหลายแบบ การอยู่นอกโฟกัส หรือวัตถุที่เคลื่อนไหว</p>
+    <p>9. เปรียบเทียบกับ Galaxy X23FE</p>
+    <p>10. Galaxy X24FE ใช้ชิปเซ็ต Exynos 2400e.</p>
+    <p>11. ลดการสะท้อนและปรับปรุงการมองเห็นที่ชัดเจน แม้ในแสงแดดโดยตรง และ หน้าจอ Dynamic AMOLED 2X ที่ได้รับการปรับปรุงจะช่วยเพิ่มคอนทราสต์และสีเพื่อประสบการณ์ที่ยอดเยี่ยมอย่างชัดเจนค่าปกติเป็นค่าที่ได้รับการทดสอบภายในห้องทดลองขององค์กรบุคคลที่สาม</p>
+    <p>12. ค่าปกติคือค่าเฉลี่ยโดยประมาณที่พิจารณาถึงการเบี่ยงเบนของความจุแบตเตอรี่ของตัวอย่างแบตเตอรี่ที่นำมาทดสอบภายใต้มาตรฐาน IEC 61960 ความจุที่ประเมินของ Galaxy X24FE คือ 4,565mAh อายุการใช้งานจริงของแบตเตอรี่อาจแตกต่างกันไปตามสภาพแวดล้อมของเครือข่าย รูปแบบการใช้งาน และปัจจัยอื่น ๆ</p>
+  </div>
+</div>
+</body>
+<script>
+  // เมื่อผู้ใช้กดปุ่ม "ซื้อ"
+  document.getElementById("add-to-cart").addEventListener("click", function() {
+      const product = {
+          name: "Galaxy X24 FE",
+          price: "22,900.00 ฿",
+          quantity: 1
+      };
+
+      // ดึงข้อมูลที่มีอยู่จาก localStorage
+      let purchasedProducts = JSON.parse(localStorage.getItem('purchasedProducts')) || [];
+
+      // เพิ่มสินค้าลงในรายการ
+      purchasedProducts.push(product);
+
+      // บันทึกกลับไปยัง localStorage
+      localStorage.setItem('purchasedProducts', JSON.stringify(purchasedProducts));
+
+      // เปลี่ยนหน้าไปยัง list.html
+      window.location.href = "{% url 'list' %}";
+  });
+</script>
+</html>
+
+{% endblock content %}
